@@ -1,0 +1,4 @@
+venv
+CallCenter/static
+CallCenter/CallCenter/__pycache__/
+*.pyc

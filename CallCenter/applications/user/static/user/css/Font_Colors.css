@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+:root {
+    --negro: #000000;
+    --blanco: #ecf5ee;
+
+    --cafe: #9f5f24;
+
+    --verdeFuerte: #85cf55;
+
+    --grisOscuro: #91977e;
+    --grisClaro: #d6d7d6;
+
+    --azulFuerte: #1284b9;
+    --azulClaro: #b4c4f8;
+    --azulOscuro: #1c3047;
+
+    --Lato: "Lato", sans-serif;
+    --Roboto: "Roboto", sans-serif;
+}
+
+.lato_regular {
+    font-family: var(--Lato);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lato_bold {
+    font-family: var(--Lato);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.lato_black {
+    font-family: var(--Lato);
+    font-weight: 900;
+    font-style: normal;
+}
+
+.lato_regular_italic {
+    font-family: var(--Lato);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.roboto_regular {
+    font-family: var(--Roboto);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto_bold {
+    font-family: var(--Roboto);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto_black {
+    font-family: var(--Roboto);
+    font-weight: 900;
+    font-style: normal;
+}
+
+.roboto_regular_italic {
+    font-family: var(--Roboto);
+    font-weight: 400;
+    font-style: italic;
+}

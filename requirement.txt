@@ -1,0 +1,7 @@
+Django
+SpeechRecognition
+spacy
+PyAudio
+mysqlclient
+
+pyttsx3
