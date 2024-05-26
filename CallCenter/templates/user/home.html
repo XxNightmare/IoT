@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    {% load static %}
+    {% static "" as baseUrl %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'user/css/fontawesome_all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <input type="checkbox" id="flip">
+            <div class="cover">
+                <div class="front" id="front">
+                    <img src="{% static 'user/img/frontImg.jpg' %}" alt>
+                    <div class="text">
+                        <span class="text-1">Aun no tienes cuenta</span>
+                        <span class="text-2">Registrate</span>
+                    </div>
+                </div>
+                <div class="back" id="back">
+                    <img class="backImg"
+                        src="{% static 'user/img/backImg.jpg' %}" alt>
+                    <div class="text">
+                        <span class="text-1">Ya tienes una cuenta?</span>
+                        <span class="text-2">Ingresa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forms">
+                <div class="form-content">
+                    <div class="login-form">
+                        <div class="title">Iniciar Sesion</div>
+                        <form action="./" method="POST">
+                            {% csrf_token %}
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" name="login_email" placeholder="Correo electronico" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" name="login_password" placeholder="Contraseña"
+                                        required>
+                                </div>
+                                <button type="submit" name="Login_button" class="button input-box">Iniciar Sesion</button>
+
+                                <div class="text sign-up-text">No tienes cuenta
+                                    <label for="flip">Registrate</label></div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="signup-form">
+                        <div class="title">Registrate</div>
+                        <form action="./" method="POST">
+                            {% csrf_token %}
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" name="register_name" placeholder="Primer nombre" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" name="register_lastNameF" placeholder="Apellido paterno" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" name="register_lastNameM" placeholder="Apellido Materno" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" name="register_email" placeholder="Correo electronico" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" name="register_password" placeholder="Contraseña" required>
+                                </div>
+                                <button class="button input-box" name="Register_button" type="submit">Registrarse</button>
+                                <div class="text sign-up-text">Ya tienes cuenta?
+                                    <label for="flip">Iniciar Sesion</label></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Generales -->
+        <script src="{% static 'user/js/jquery.js' %}"></script>
+        <script src="{% static 'user/js/generales.js' %}"></script>
+        <!-- Font Awesome -->
+        <script src="{% static 'user/js/fontawesome_all.min.js' %}"></script>
+        <!-- Sweet Alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>

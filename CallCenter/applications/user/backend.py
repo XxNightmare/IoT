@@ -9,9 +9,10 @@ from django.template.loader import get_template         # Esta funcion se encarg
 import os, time, json
 import json
 from django.http import HttpResponse
-
 import pyttsx3
 from MySQLdb import Date
+
+from applications.user.functions import *
 
 import speech_recognition as sr
 
@@ -19,9 +20,7 @@ def give_response(request):
     data = {}
     respuesta = request.POST.get('response')
     try:
-        engine = pyttsx3.init()
-        engine.say(str(respuesta))
-        engine.runAndWait()
+        responseAudio(respuesta)
         data["allOk"] = True
     except Exception as ex:
         print(f"Error {ex}")

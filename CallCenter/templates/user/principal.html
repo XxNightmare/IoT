@@ -32,32 +32,32 @@
 
   <body class="background_login">
     <div class="centered_container column">
-      <div class="contenedor_imagen one_padding">
-        <img src="{% static 'user/img/IA.png' %}" alt>
-      </div>
-      <h1>IoT</h1>
-      <form action="./" method="POST">
-        {% csrf_token %}
-        <div class="row">
-          <textarea class="form_control" cols="50" rows="10"
-            style="margin: 10px 0;"
-            name="send_information" id="send_information" maxlength="150"
-            placeholder="Se mostrara lo que dices" disabled></textarea>
+      <div class="tamano_completo row">
+        <div class="contenedor_imagen one_padding">
+          <img src="{% static 'user/img/IA.png' %}" alt>
+        </div>
 
-          <textarea class="form_control" cols="50" rows="10"
+        <h1 style="margin: 0.5rem 0;"><span>Internet de las cosas</span></h1>
+      </div>
+
+      <form action="./" class="tamano_completo row" method="POST">
+        {% csrf_token %}
+          <textarea class="form_control tamano_completo" rows="5"
+            style="margin: 10px 0; font-size: 1.7rem;"
+            name="send_information" id="send_information" maxlength="150"
+            placeholder="Registro conversacion" disabled></textarea>
+
+          <!-- <textarea class="form_control" cols="50" rows="10"
             style="margin: 10px 0;"
             name="text_information" id="text_information" maxlength="150"
-            placeholder="Escribe lo que quieras decir"></textarea>
-        </div>
+            placeholder="Escribe lo que quieras decir"></textarea> -->
         
         <div class="row">
           <button id="btnConversation" type="button" onclick="get_conversacion(event)">Conversacion</button>
-          <button id="btnEnviar" type="button" onclick="generals(event)">Inicio</button>
         </div>
       </form>
     </div>
   </body>
-
   <!-- Generales -->
   <script src="{% static 'user/js/jquery.js' %}"></script>
   <script src="{% static 'user/js/generales.js' %}"></script>
