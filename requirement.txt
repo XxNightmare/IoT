@@ -3,5 +3,6 @@ SpeechRecognition
 spacy
 PyAudio
 mysqlclient
-
+pandas
 pyttsx3
+scikit-learn

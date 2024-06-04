@@ -44,7 +44,7 @@ def principal(request):
         return redirect('../')
     data = {}
     data = getInformationUser(request.user.id)
-    # responseAudio(f"Bienvenido {data['name']} {data['lastName_P']} {data['lastName_M']}")    
+    responseAudio(f"Bienvenido, {data['name']} {data['lastName_P']} {data['lastName_M']}")
     return render(request, 'user/principal.html', data)
 
 def logout_user(request):

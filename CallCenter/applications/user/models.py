@@ -42,8 +42,11 @@ class Intents(models.Model): # Intenciones
         db_table = "intents"
 
 class Responses(models.Model): # Respuestas
-    intention    = models.ForeignKey(Intents, on_delete = models.CASCADE, default = 1)   # ID INTENCION
-    response     = models.CharField(max_length = 500, blank = True, null = True, default = "") # RESPUESTA
+    categoria           = models.CharField(max_length = 255, blank = True, null = True, default = "") # CATEGORIA
+    subcategoria        = models.CharField(max_length = 255, blank = True, null = True, default = "") # SUBCATEGORIA
+    texto_consulta      = models.TextField(blank = True, null = True, default = "") # TEXTO CONSULTA
+    descripcion_problema    = models.TextField(blank = True, null = True, default = "") # DESCRIPCION PROBLEMA
+    solucion_sugerida   = models.TextField(blank = True, null = True, default = "") # SOLUCION SUGERIDA
     class Meta():
         verbose_name = 'Respuestas'
         verbose_name_plural = 'Respuestas'

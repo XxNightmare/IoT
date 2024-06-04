@@ -19,13 +19,16 @@ import speech_recognition as sr
 def give_response(request):
     data = {}
     respuesta = request.POST.get('response')
+    resp = buscar_respuesta(respuesta)
     try:
-        responseAudio(respuesta)
+        data["conversation"] = resp['solucion_sugerida']
+        responseAudio(resp['solucion_sugerida'])
         data["allOk"] = True
     except Exception as ex:
         print(f"Error {ex}")
         data["allOk"] = False
     return JsonResponse(data)
+
 
 def get_conversacion(request):
     data = {}
