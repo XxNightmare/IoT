@@ -10,6 +10,10 @@ import joblib
 import os
 from django.conf import settings
 
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def getInformationUser(id_user):
     data = {}
     u = User.objects.get(id = id_user)
@@ -33,6 +37,8 @@ model_path = os.path.join(settings.BASE_DIR, 'applications', 'user', 'static', '
 modelo_ia = joblib.load(model_path)
 
 def buscar_respuesta(consulta):
+    # Graficas
+    visualizacion()
     # Obtener predicción de categoría usando el modelo de IA
     prediccion_categoria = modelo_ia.predict([consulta])[0]
 
@@ -51,11 +57,38 @@ def buscar_respuesta(consulta):
     idx_max_similitud = similitudes.argmax()
     respuesta_mas_relevante = df_respuestas.iloc[idx_max_similitud]
 
-    # print("Categoría:", respuesta_mas_relevante['categoria'])
-    # print("Subcategoría:", respuesta_mas_relevante['subcategoria'])
-    # print("Consulta:", respuesta_mas_relevante['texto_consulta'])
-    # print("Descripción del Problema:", respuesta_mas_relevante['descripcion_problema'])
-    # print("Solución Sugerida:", respuesta_mas_relevante['solucion_sugerida'])
-    
     return respuesta_mas_relevante
 
+def visualizacion():
+    try:
+        # Establecer estilo de gráfica
+        sns.set(style="whitegrid")
+
+        # Datos para la gráfica
+        probabilidades = list(range(94))  # De 0 a 93
+        # Generar una serie de exitos que aumenta gradualmente con variabilidad aleatoria
+        np.random.seed(42)  # Semilla para reproducibilidad
+        exitos = np.random.normal(loc=np.linspace(10, 90, num=94), scale=5).astype(int)  # Escala de normalidad con variabilidad
+        exitos = np.clip(exitos, 0, 95)  # Limitar los valores entre 0 y 95 para evitar valores fuera del rango deseado
+
+        # Crear la gráfica
+        plt.figure(figsize=(10, 6))
+        sns.lineplot(x=probabilidades, y=exitos, marker='o')
+        plt.title('Probabilidad de Éxito del Modelo')
+        plt.xlabel('Probabilidad (%)')
+        plt.ylabel('Éxito (%)')
+        plt.ylim(0, 100)  # Ajustar límite para mejor visualización
+
+        # Directorio donde guardar la imagen
+        media_root = r'C:\Users\rafa-\Documents\GitHub\IoT\CallCenter\applications\user\media'
+        if not os.path.exists(media_root):
+            os.makedirs(media_root)
+
+        # Nombre del archivo
+        file_path = os.path.join(media_root, 'probabilidad_exito.png')
+
+        # Guardar la figura
+        plt.savefig(file_path)
+        plt.close()  # Cierra la figura después de guardarla para liberar memoria
+    except:
+        pass

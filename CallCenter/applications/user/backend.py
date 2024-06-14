@@ -29,7 +29,6 @@ def give_response(request):
         data["allOk"] = False
     return JsonResponse(data)
 
-
 def get_conversacion(request):
     data = {}
     # OBTENER AUDIO DEL MICRÓFONO

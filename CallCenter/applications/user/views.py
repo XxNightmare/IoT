@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
 from .models import *
 from .functions import *
+from django.http import FileResponse
 
 def home(request):
     data = {}
@@ -45,6 +46,12 @@ def principal(request):
     data = {}
     data = getInformationUser(request.user.id)
     responseAudio(f"Bienvenido, {data['name']} {data['lastName_P']} {data['lastName_M']}")
+    # ------------------------------------------------------------------------------------------------------------------------------------------
+    if request.method == "POST" and 'btnDownload' in request.POST:
+        image_path = os.path.join(r'C:\Users\rafa-\Documents\GitHub\IoT\CallCenter\applications\user\media', 'probabilidad_exito.png')
+        response = FileResponse(open(image_path, 'rb'), as_attachment=True, filename='probabilidad_exito.png')
+        return response
+    # ------------------------------------------------------------------------------------------------------------------------------------------
     return render(request, 'user/principal.html', data)
 
 def logout_user(request):
