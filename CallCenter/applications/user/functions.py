@@ -64,20 +64,20 @@ def visualizacion():
         # Establecer estilo de gráfica
         sns.set(style="whitegrid")
 
-        # Datos para la gráfica
-        probabilidades = list(range(94))  # De 0 a 93
-        # Generar una serie de exitos que aumenta gradualmente con variabilidad aleatoria
-        np.random.seed(42)  # Semilla para reproducibilidad
-        exitos = np.random.normal(loc=np.linspace(10, 90, num=94), scale=5).astype(int)  # Escala de normalidad con variabilidad
-        exitos = np.clip(exitos, 0, 95)  # Limitar los valores entre 0 y 95 para evitar valores fuera del rango deseado
+        # Crear datos para la gráfica con 27 puntos
+        probabilidades = list(range(27))  # De 0 a 26
+        np.random.seed(42)
+        # Generar una serie de éxitos que aumenta gradualmente con variabilidad aleatoria
+        exitos = np.random.normal(loc=np.linspace(0, 26, num=27), scale=1).astype(int)
+        exitos = np.clip(exitos, 0, 26)  # Limitar los valores entre 0 y 26
 
         # Crear la gráfica
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=(10, 6))  # Ajustar tamaño para mejor visualización
         sns.lineplot(x=probabilidades, y=exitos, marker='o')
         plt.title('Probabilidad de Éxito del Modelo')
-        plt.xlabel('Probabilidad (%)')
-        plt.ylabel('Éxito (%)')
-        plt.ylim(0, 100)  # Ajustar límite para mejor visualización
+        plt.xlabel('Número de prueba')
+        plt.ylabel('Éxito')
+        plt.ylim(0, 27)  # Ajustar límite para mejor visualización
 
         # Directorio donde guardar la imagen
         media_root = r'C:\Users\rafa-\Documents\GitHub\IoT\CallCenter\applications\user\media'
@@ -85,10 +85,17 @@ def visualizacion():
             os.makedirs(media_root)
 
         # Nombre del archivo
-        file_path = os.path.join(media_root, 'probabilidad_exito.png')
+        file_path = os.path.join(media_root, 'probabilidad_exito2.png')
 
-        # Guardar la figura
+        # Comprobar si el archivo ya existe y eliminarlo si es necesario
+        if os.path.exists(file_path):
+            os.remove(file_path)  # Eliminar el archivo existente
+
         plt.savefig(file_path)
-        plt.close()  # Cierra la figura después de guardarla para liberar memoria
-    except:
-        pass
+        plt.close()
+
+        print(f"Archivo guardado en: {file_path}")
+
+    except Exception as e:
+        print(f"Error: {e}")
+
